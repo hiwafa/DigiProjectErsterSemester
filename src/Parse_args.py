@@ -1,8 +1,16 @@
-
 import argparse
 
+# Funktion zur Generierung der Antwort basierend auf der Frage
+def antwort_generieren(question, antworten_dict):
+    # Antwort aus dem Wörterbuch holen oder Standardnachricht zurückgeben
+    return antworten_dict.get(question.lower(), f"Frage erhalten: {question}")
 
 def main():
+    # Wörterbuch mit Fragen und Antworten
+    antworten_dict = {
+        "wie geht es dir?": "Mir geht es gut, danke!",
+        "was ist dein name?": "Mein Name ist Chatbot."
+    }
 
     # Erstellen eines Parsers für Befehlszeilenargumente
     parser = argparse.ArgumentParser(description="Chatbot Command Line Interface")
@@ -15,13 +23,13 @@ def main():
 
     # Überprüfen, ob das Argument --question vorhanden ist
     if args.question:
-        # Wenn eine Frage vorhanden ist, wird sie gespeichert und ausgegeben
-        question = args.question
-        print(f"Frage erhalten: {question}")
+        # Antwort für die eingegebene Frage generieren
+        antwort = antwort_generieren(args.question, antworten_dict)
+        print(antwort)
     else:
         # Wenn keine Frage vorhanden ist, wird eine Willkommensnachricht angezeigt
         print("Willkommen beim Chatbot! Bitte geben Sie Ihre Frage ein.")
 
-
+# Ausführen der Hauptfunktion
 if __name__ == "__main__":
     main()
