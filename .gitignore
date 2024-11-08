@@ -1,0 +1,5 @@
+/.DS_Store
+/path
+/.pytest_cache
+/chatbot/__pycache__
+/tests/__pycache__
